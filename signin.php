@@ -9,6 +9,9 @@ $title = 'Sgin In';
         <form method="post" action="">
           <label for="email">Email:</label><br>
           <input type="text" name="email" id="eamil" value="<?= old('email'); ?>">
+          <label for="password">Password:<label><br> 
+          <input type="password" name="password" id="password">
+          
           
           
         </form>
