@@ -30,3 +30,6 @@ padding-top: 15px;
 text-align: center;
 color: #6699cc;
 }
+span.error{
+  color: red;
+}
