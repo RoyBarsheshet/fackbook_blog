@@ -33,3 +33,9 @@ color: #6699cc;
 span.error{
   color: red;
 }
+.post-box{
+  border: 1px solid lightgray;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  
+}

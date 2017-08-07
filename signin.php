@@ -1,6 +1,11 @@
 <?php
 require_once 'app/helpers.php';
 session_start();
+
+if(isset($_SESSION['user_id'])){
+  header('location: blog.php');
+  exit;
+}
 $title = 'Sgin In';
 $error = '';
 
@@ -25,12 +30,15 @@ if(isset($_POST['submit'])){
    if($result && mysqli_num_rows($result) > 0){
      
      $user = mysqli_fetch_assoc($result);
+     
      $_SESSION['user_name'] = $user['first_name'];
      $_SESSION['user_last_name'] = $user['last_name'];
      $_SESSION['user_gender'] = $user['gender'];
      $_SESSION['user_id']= $user['id'];
      $_SESSION['user_avatar'] = $user['avatar'];
+     $_SESSION['user_email']= $user['email'];
      header('location: blog.php');
+//     print_r($user);
      exit;
      
    } else {

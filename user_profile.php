@@ -8,21 +8,23 @@ if(!isset($_SESSION['user_id'])){
 }
 $title ='profile Page' ;
 
-$user_id = $user['id'];
+$uid = $_SESSION['user_id'];
+
 $first_name='';
-$last_name='';
-$email_profile='';
+$last_name= '';
+$email_profile= '';
 
-
+if(isset($_POST['submit'])){
 $link = mysqli_connect('localhost', 'root', '', 'fakebook_blog'); 
 // Check connection
-if (!$link) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+//if (!$link) {
+//    die("Connection failed: " . mysqli_connect_error());
+//}
 
-$sql = "UPDATE users SET first_name='$first_name', last_name='$last_name', email='$email_profile' WHERE id= '$user_id'";
+$sql = "UPDATE users VALUES ('',$first_name','$last_name','$email_profile','','','','$uid')";
+$result = mysqli_query($link, $sql);
 
-if (mysqli_query($link, $sql)) {
+ if ($result) {
     echo '<script language="javascript">';
     echo 'alert("Profile updated successfully")';
     echo '</script>';
@@ -31,8 +33,8 @@ if (mysqli_query($link, $sql)) {
      echo 'alert("Error updating Profile")';
      echo '</script>';
 }
-mysqli_close($link);
 
+}
 
 ?>
 <?php include 'tpl/header.php'; ?>
@@ -44,7 +46,8 @@ mysqli_close($link);
           <label for="last_name">Last Name:</label><br>
           <input type="text" name="last_name" id="last_name" value="<?= $last_name; ?>" placeholder="<?= $_SESSION['user_last_name'];?>"><br><br>
           <label for="email">Email:</label><br>
-          <input type="text" name="email" id="eamil" value="<?= $email_profile; ?>" placeholder="<?= $_SESSION['email'];?>" ><br><br>
+          <input type="text" name="email" id="eamil" value="<?= $email_profile; ?>" placeholder="<?= $_SESSION['user_email'];?>" ><br><br>
+          <input type="submit" name="submit" value="Update Profile">
       </div>
 <?php include 'tpl/footer.php'; ?>     
 
