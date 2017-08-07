@@ -46,9 +46,9 @@ if(isset($_POST['submit'])){
           <label for="email">Email:</label><br>
           <input type="text" name="email" id="eamil" value="<?= old('email'); ?>"><br><br>
           <label for="password">Password:<label><br> 
-              <input type="password" name="password" id="password"><br><br>
-              <input type="submit" name="submit" value="Sign In">
-              <span class="error"> <?= $error; ?></span>
+      <input type="password" name="password" id="password"><br><br>
+      <input type="submit" name="submit" value="Sign In">
+      <span class="error"> <?= $error; ?></span>
         </form>
         
         
