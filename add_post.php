@@ -11,9 +11,10 @@ $error = '';
 $post_title='';
 
 if(isset($_POST['submit'])){
-  
-  $post_title = !empty($_POST['title']) ? trim($_POST['title']) : '';
-  $article = !empty($_POST['article']) ? trim($_POST['article']) : '';
+  $post_title = filter_input(INPUT_POST, 'title' , FILTER_SANITIZE_STRING);
+  $post_title = trim($post_title);
+  $article = filter_input(INPUT_POST, 'article' , FILTER_SANITIZE_STRING);
+  $article = trim($article);
   
   if( ! $post_title){
     
@@ -24,6 +25,9 @@ if(isset($_POST['submit'])){
   
 } else {
 $link = mysqli_connect('localhost', 'root', '', 'fakebook_blog'); 
+$post_title = mysqli_real_escape_string($link, $post_title);
+$article = mysqli_real_escape_string($link, $article);
+
 mysqli_query($link, "SET NAMES utf8");
 $uid = $_SESSION['user_id'];
    $sql = "INSERT INTO posts VALUES('','$post_title','$article',NOW(),$uid)";

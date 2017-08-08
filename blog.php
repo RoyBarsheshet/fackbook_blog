@@ -27,10 +27,10 @@ mysqli_query($link, "SET NAMES utf8");
        <?php if ($posts) : ?>
         <?php foreach ($posts as $post): ?>
         <div class="post-box">
-          <h3><?= $post['title']; ?></h3>
-          <p><?= $post['article']; ?></p>
+          <h3><?= htmlentities($post['title']); ?></h3>
+          <p><?= htmlentities($post['article']); ?></p>
           <hr>
-          <p><b>Writen by:</b> <?= $post['first_name']?> <?= $post['last_name']?> <b>On date:</b> <?= $post['date'];?></p>
+          <p><b>Writen by:</b> <?= htmlentities($post['first_name']);?> <?= htmlentities($post['last_name']);?> <b>On date:</b> <?= $post['date'];?></p>
         </div>
         <?php endforeach; ?>
         <?php endif; ?>

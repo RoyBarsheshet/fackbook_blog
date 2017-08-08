@@ -10,21 +10,26 @@ $title = 'Sgin In';
 $error = '';
 
 if(isset($_POST['submit'])){
+  $email = filter_input(INPUT_POST,'email', FILTER_VALIDATE_EMAIL);
+  $email = trim($email);
   
-  $email = !empty($_POST['email']) ? trim($_POST['email']) : '';
-  $password = !empty($_POST['password']) ? trim($_POST['password']) :'';
-  $emailRegexp = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
+  $password = filter_input(INPUT_POST,'password', FILTER_VALIDATE_STRING);
+  $password = trim($password);
+  
   
   if(! $email){
     $error = '  * A valid email is required';
-  }elseif ( !preg_match($emailRegexp, $email)) {
-    $error = '  * Email must be a valid email format addrass';
-  }elseif (!$password ) {
+ 
+  }elseif (!$password || strlen($password) < 6 || strlen($password) > 10) {
     $error = ' * A valid password is required ';
     
   }else{
+    
    $link = mysqli_connect('localhost', 'root', '', 'fakebook_blog'); 
+   $email = mysqli_real_escape_string($link, $email);
+   $password = mysqli_real_escape_string($link, $password);
    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+   
    $result = mysqli_query($link, $sql);
    
    if($result && mysqli_num_rows($result) > 0){
@@ -45,12 +50,16 @@ if(isset($_POST['submit'])){
    $error =' *Wrong email and password combination';  
    }
   }
+  $token = csrf_token();
+} else {
+  $token = csrf_token();
 }
 ?>
 <?php include 'tpl/header.php'; ?>
       <div class="content">
         <h1>Sign In</h1>
         <form method="post" action="">
+          <input type="hidden" name="token" value="<?= $token; ?>">
           <label for="email">Email:</label><br>
           <input type="text" name="email" id="eamil" value="<?= old('email'); ?>"><br><br>
           <label for="password">Password:<label><br> 

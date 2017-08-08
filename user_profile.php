@@ -23,8 +23,8 @@ $link = mysqli_connect('localhost', 'root', '', 'fakebook_blog');
 
 $sql = "UPDATE users VALUES ('',$first_name','$last_name','$email_profile','','','','$uid')";
 $result = mysqli_query($link, $sql);
-
- if ($result) {
+print_r($result);
+ if ($result && mysqli_num_rows($result) > 0) {
     echo '<script language="javascript">';
     echo 'alert("Profile updated successfully")';
     echo '</script>';

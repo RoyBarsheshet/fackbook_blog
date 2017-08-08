@@ -15,7 +15,7 @@
           <li><a href="signin.php">Sign in</a></li>
           <li><a href="signup.php">Sign up</a></li>
           <?php else:?>
-          <li><a href="user_profile.php"><?= $_SESSION['user_name']; ?></a></li>
+          <li><a href="user_profile.php"><?= htmlentities($_SESSION['user_name']); ?></a></li>
           <li>
             <a href="user_profile.php">
               <img border="0" width="30" src="images/<?= $_SESSION['user_avatar']; ?>">
