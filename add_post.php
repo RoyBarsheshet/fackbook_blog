@@ -50,8 +50,8 @@ $uid = $_SESSION['user_id'];
           <input type="text" name="title" value="<?= old('title');?>"><br><br>
           <label for="article">Article:</label><br>
           <textarea  rows="10" cols="50" name="article"><?= old('article'); ?></textarea><br><br>
-          <input type="submit" name="submit" value="Save Post">
-          <input type="button" value="Cancel"  onclick="window.location='blog.php';">
+          <input class="click-btn-large" type="submit" name="submit" value="Save Post">
+          <input class="click-btn-large" type="button" value="Cancel"  onclick="window.location='blog.php';">
           <span class="error"><?= $error; ?></span>
         </form>
        

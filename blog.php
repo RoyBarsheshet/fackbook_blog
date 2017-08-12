@@ -24,19 +24,19 @@ mysqli_query($link, "SET NAMES utf8");
 <?php include 'tpl/header.php'; ?>
       <div class="content">
         <h1>Fakebook blog</h1>
-        <p><input type="button" value="+ Add Your Post" onclick="window.location='add_post.php';"></p>
+        <p><input class="click-btn-large" type="button" value="Add New Post" onclick="window.location='add_post.php';"></p>
        <?php if ($posts) : ?>
         <?php foreach ($posts as $post): ?>
         <div class="post-box">
-          <h3><?= htmlentities($post['title']); ?></h3>
+          <h2 class="post-info"><?= htmlentities($post['title']); ?></h2>
           <p><?= str_replace("\n", '<br>',htmlentities($post['article'])); ?></p>
           <hr>
           <p>
-            <b>Writen by:</b> <?= htmlentities($post['first_name']);?> <?= htmlentities($post['last_name']);?> <b>On date:</b> <?= $post['date'];?>
+            <b class="post-info">Writen by:</b> <?= htmlentities($post['first_name']);?> <?= htmlentities($post['last_name']);?> <b class="post-info">On date:</b> <?= $post['date'];?>
             <?php if($post['user_id'] == $uid) : ?>
             <span class="right">
-              <a href="update_post.php?pid=<?= $post['id']; ?>">Edit</a>
-              <a href="delete_post.php?pid=<?= $post['id']; ?>">Delete</a>
+              <a class="post-btn" href="update_post.php?pid=<?= $post['id']; ?>">Edit</a>
+              <a class="post-btn" href="delete_post.php?pid=<?= $post['id']; ?>">Delete</a>
             </span>
             <?php endif; ?>
           </p>

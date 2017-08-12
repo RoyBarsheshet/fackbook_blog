@@ -111,7 +111,7 @@ if(isset($_POST['submit'])){
       <input type="password" name="confirm_password" id="confirm_Password">
       <span class="error"> <?= $error['confirm_password']; ?></span><br><br>
       
-      <input type="submit" name="submit" value="Sign Up">
+      <input class="click-btn-large" type="submit" name="submit" value="Sign Up">
      
         </form>
         

@@ -50,8 +50,8 @@ if(isset($_POST['submit'])){
         <h1>Are you sure you want to delete this post?</h1>
         <form method="post" action="">
          
-          <input type="submit" name="submit" value="Delete">
-          <input type="button" value="Cancel"  onclick="window.location='blog.php';">
+          <input class="click-btn-large" type="submit" name="submit" value="Delete">
+          <input class="click-btn-large" type="button" value="Cancel"  onclick="window.location='blog.php';">
           
         </form>
        

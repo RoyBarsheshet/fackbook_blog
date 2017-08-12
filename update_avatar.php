@@ -42,12 +42,14 @@ if(isset($_POST['submit'])){
 ?>
 <?php include 'tpl/header.php'; ?>
       <div class="content">
+        
         <h1>Update profile picture</h1>
+        <p><img border="0" class="img-profile" src="images/<?= $_SESSION['user_avatar']; ?>"></p><br><br>
         <form method="post" action="" enctype="multipart/form-data">
           <label for="image">Image Profile<label><br><br>
           <input type="file" name="image" id="image"><br><br>
-          <input type="submit" name="submit" value="Update Image">
-          <input type="button" value="Cancel"  onclick="window.location='blog.php';">
+          <input class="click-btn-large" type="submit" name="submit" value="Update Image">
+          <input class="click-btn-large" type="button" value="Cancel"  onclick="window.location='blog.php';">
           
         </form>
        

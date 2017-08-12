@@ -10,20 +10,20 @@
     <div class="page-wrapper">
       <div class="header">
         <ul>
-          <li><a href="./">FakeBook</a></li>
-          <li><a href="about.php">About</a></li>
-          <li><a href="blog.php">Blog</a></li>
+          <li><a class="btn-5" href="blog.php">FakeBook</a></li>
+          <li><a  class="btn-5" href="about.php">About</a></li>
+          <li><a class="btn-5" href="blog.php">Blog</a></li>
            <?php if (! isset($_SESSION['user_id']) ): ?>
-          <li><a href="signin.php">Sign in</a></li>
-          <li><a href="signup.php">Sign up</a></li>
+          <li><a class="btn-5" href="signin.php">Sign in</a></li>
+          <li><a class="btn-5" href="signup.php">Sign up</a></li>
           <?php else:?>
-          <li><a href="user_profile.php"><?= htmlentities($_SESSION['user_name']); ?></a></li>
+          <li><a class="btn-5" href="user_profile.php"><?= htmlentities($_SESSION['user_name']); ?></a></li>
           <li>
-            <a href="user_profile.php">
+            <a class="btn-5" href="update_avatar.php">
               <img border="0" width="30" src="images/<?= $_SESSION['user_avatar']; ?>">
             </a>
           </li>
-          <li><a href="logout.php">logout</a></li>
+          <li class="btn-5"><a href="logout.php">logout</a></li>
           <?php endif;?>
         </ul>  
       </div>

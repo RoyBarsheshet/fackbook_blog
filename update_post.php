@@ -72,8 +72,8 @@ $article = mysqli_real_escape_string($link, $article);
       <input type="text" name="title" value="<?= $post['title']; ?>"><br><br>
       <label for="article">Article:</label><br>
       <textarea rows="10" cols="50" name="article"><?= $post['article']; ?></textarea><br><br>
-      <input type="submit" name="submit" value="Update post">
-      <input type="button" value="Cancel" onclick="window.location='blog.php';">
+      <input class="click-btn-large" type="submit" name="submit" value="Update post">
+      <input class="click-btn-large" type="button" value="Cancel" onclick="window.location='blog.php';">
       <span class="error"><?= $error; ?></span>
     </form>
   </div>
