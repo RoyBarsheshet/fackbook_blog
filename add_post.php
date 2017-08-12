@@ -2,7 +2,8 @@
 require_once 'app/helpers.php';
 session_start();
 
-if(!isset($_SESSION['user_id'])){
+if ( ! verify_user()){
+  
   header('location: signin.php');
   exit;
 }
@@ -11,9 +12,9 @@ $error = '';
 $post_title='';
 
 if(isset($_POST['submit'])){
-  $post_title = filter_input(INPUT_POST, 'title' , FILTER_SANITIZE_STRING);
+  $post_title = filter_input(INPUT_POST, 'title' , FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
   $post_title = trim($post_title);
-  $article = filter_input(INPUT_POST, 'article' , FILTER_SANITIZE_STRING);
+  $article = filter_input(INPUT_POST, 'article' , FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
   $article = trim($article);
   
   if( ! $post_title){
@@ -34,7 +35,7 @@ $uid = $_SESSION['user_id'];
    $result = mysqli_query($link, $sql);  
    
    if($result && mysqli_affected_rows($link) > 0){
-    header('location: blog.php');
+    header('location: blog.php?sm=Your Post has been seved');
   exit;
    }
 }     

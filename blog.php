@@ -8,6 +8,7 @@ if(!isset($_SESSION['user_id'])){
 }
 $title = 'Fakebook Blog';
 $posts = [];
+$uid = $_SESSION['user_id'];
 $link = mysqli_connect('localhost', 'root', '', 'fakebook_blog'); 
 mysqli_query($link, "SET NAMES utf8");
    $sql = "SELECT u.first_name,u.last_name,p.id,p.user_id,p.title,p.article,DATE_FORMAT(p.date,'%d/%m/%Y') date FROM posts p "
@@ -28,9 +29,17 @@ mysqli_query($link, "SET NAMES utf8");
         <?php foreach ($posts as $post): ?>
         <div class="post-box">
           <h3><?= htmlentities($post['title']); ?></h3>
-          <p><?= htmlentities($post['article']); ?></p>
+          <p><?= str_replace("\n", '<br>',htmlentities($post['article'])); ?></p>
           <hr>
-          <p><b>Writen by:</b> <?= htmlentities($post['first_name']);?> <?= htmlentities($post['last_name']);?> <b>On date:</b> <?= $post['date'];?></p>
+          <p>
+            <b>Writen by:</b> <?= htmlentities($post['first_name']);?> <?= htmlentities($post['last_name']);?> <b>On date:</b> <?= $post['date'];?>
+            <?php if($post['user_id'] == $uid) : ?>
+            <span class="right">
+              <a href="update_post.php?pid=<?= $post['id']; ?>">Edit</a>
+              <a href="delete_post.php?pid=<?= $post['id']; ?>">Delete</a>
+            </span>
+            <?php endif; ?>
+          </p>
         </div>
         <?php endforeach; ?>
         <?php endif; ?>

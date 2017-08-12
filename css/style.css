@@ -39,3 +39,15 @@ span.error{
   padding-left: 15px;
   
 }
+span.right{
+  float: right;
+  margin-right: 15px;
+  text-decoration: none;
+  
+}
+#sm-box {
+  background: green;
+  text-align: center;
+  color: white;
+  padding: 1px;
+}

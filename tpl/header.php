@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $title; ?></title>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
   </head>
@@ -25,3 +27,8 @@
           <?php endif;?>
         </ul>  
       </div>
+       <?php if( isset($_GET['sm']) ): ?>
+      <div id="sm-box">
+        <p><?= $_GET['sm']; ?></p>
+      </div>
+      <?php endif; ?>
