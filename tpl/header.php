@@ -4,11 +4,16 @@
      <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $title; ?></title>
+    <link href="css/bootstrap-4.0.0-beta/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    
+       <script src="css/bootstrap-4.0.0-beta/assets/js/vendor/jquery-slim.min.js" type="text/javascript"></script>
+       <script src="css/bootstrap-4.0.0-beta/assets/js/vendor/popper.min.js" type="text/javascript"></script>
+       <script src="css/bootstrap-4.0.0-beta/dist/js/bootstrap.min.js" type="text/javascript"></script>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
     <div class="page-wrapper">
-      <div class="header">
+      <div class="header container-fluid">
         <ul>
           <li><a class="btn-5" href="blog.php">FakeBook</a></li>
           <li><a  class="btn-5" href="about.php">About</a></li>
