@@ -64,10 +64,12 @@ if(isset($_POST['submit']) ){
 }
 ?>
 <?php include 'tpl/header.php'; ?>
-      <div class="content">
+      <div class="content bg-light">
         
         <h1><?= $_SESSION['user_name']; ?>&nbsp;<?= $_SESSION['user_last_name']; ?></h1>
-        <p><img border="0" class="img-profile" src="images/<?= $_SESSION['user_avatar']; ?>"></p><br><br>
+        <div class="text-center">
+        <img width="600"  src="images/<?= $_SESSION['user_avatar']; ?>" class="img-thumbnail rounded"><br><br>
+        </div>
         <form method="post" action="" enctype="multipart/form-data">
           
           <label for="first_name">First Name:</label><br>
@@ -77,6 +79,8 @@ if(isset($_POST['submit']) ){
           <label for="email">Email:</label><br>
           <input type="text" name="email" id="eamil" value="<?= $email_profile; ?>" placeholder="<?= $_SESSION['user_email'];?>" ><span class="error"> <?= $error['email']; ?></span><br><br>
           <p><b class="post-info">If you want to change your profile image Press <a href="update_avatar.php">here!</a></b></p>
+          
+          
           <input class="click-btn-large" type="submit" name="submit" value="Update Profile">
           <input class="click-btn-large" type="button" value="Cancel"  onclick="window.location='blog.php';">
           

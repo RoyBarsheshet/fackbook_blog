@@ -71,6 +71,42 @@ if(isset($_POST['submit'])){
 //print_r($user);
 ?>
 <?php include 'tpl/header.php'; ?>
+
+<div class="text-left m-5">
+    <h1 style="font-family:serif ">SIGN IN</h1>
+</div>
+<div class="m-5 bg-light">
+     
+<form method="post" action="">
+  <div class="form-group">
+      <input type="hidden" name="token" value="<?= $token; ?>">
+          
+    <label for="email">Email address</label>
+     <!--<input type="text" name="email" id="eamil" value="<?= old('email'); ?>">-->
+    <input type="text" class="form-control w-25" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="<?= old('email'); ?>">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+    
+  <div class="form-group">
+    <label for="Password">Password</label>
+    <input type="password" name="password" class="form-control w-25" id="Password" placeholder="Password">
+  </div>
+    
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      Remember me
+    </label>
+  </div>
+  <input class="click-btn-large" type="submit" name="submit" value="Sign In">
+  <span class="error"> <?= $error; ?></span>
+</form>
+
+</div>
+
+
+
+<!--
       <div class="content">
         <h1>Sign In</h1>
         <form method="post" action="">
@@ -84,6 +120,6 @@ if(isset($_POST['submit'])){
         </form>
         
         
-      </div>
+      </div>-->
 <?php include 'tpl/footer.php'; ?>     
 
