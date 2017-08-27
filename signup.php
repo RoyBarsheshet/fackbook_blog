@@ -88,8 +88,10 @@ if(isset($_POST['submit'])){
 //print_r($user);
 ?>
 <?php include 'tpl/header.php'; ?>
-      <div class="content">
-        <h1>Create New Account</h1>
+     <div class="text-left m-5">
+    <h1 style="font-family:serif ">Create New Account</h1>
+</div>
+      
         <form method="post" action="">
           <input type="hidden" name="token" value="<?= $token; ?>">
            <label for="first_name">First Name:</label><br>

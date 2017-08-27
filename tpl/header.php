@@ -17,12 +17,10 @@
   <li class="nav-item bg-light">
       <a class="nav-link active bg-light" style="font-weight: bolder" href="blog.php">FakeBook</a>
   </li>
-  <li class="nav-item">
+<!--  <li class="nav-item">
     <a class="nav-link" href="about.php">About</a>
-  </li>
-   <li class="nav-item">
-    <a class="nav-link" href="blog.php">Blog</a>
-  </li>
+  </li>-->
+   
    <?php if (! isset($_SESSION['user_id']) ): ?>
    <li class="nav-item">
     <a class="nav-link" href="signin.php">Sign in</a>
@@ -31,6 +29,9 @@
     <a class="nav-link" href="signup.php">Sign up</a>
   </li>
     <?php else:?>
+  <li class="nav-item">
+    <a class="nav-link" href="blog.php">Home</a>
+  </li>
    <li class="nav-item">
     <a class="nav-link" href="user_profile.php"><?= htmlentities($_SESSION['user_name']); ?></a>
   </li>
