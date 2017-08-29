@@ -4,6 +4,9 @@
      <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $title; ?></title>
+    
+    <link rel="shortcut icon" href="https://m.facebook.com/apple-touch-icon.png?refsrc=https%3A%2F%2Ffacebook.com%2F&_rdr" type="image/x-icon" />
+    
     <link href="css/bootstrap-4.0.0-beta/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     
        <script src="css/bootstrap-4.0.0-beta/assets/js/vendor/jquery-slim.min.js" type="text/javascript"></script>

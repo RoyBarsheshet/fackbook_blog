@@ -147,30 +147,54 @@ border-radius: 2px;
 }
 .post-btn{
   
-  /*padding-right: 5px;*/
-    -webkit-font-smoothing: antialiased;
-  font-family: helvetica, arial, sans-serif;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 1;
-
-  text-decoration: none;
-  text-shadow: 0 -1px 0 #354c8c;
-  vertical-align: top;
-  white-space: nowrap;
-
-  color: #fff;
-  background: linear-gradient(#4c69ba, #3b55a0);
-
-  box-sizing: border-box;
-  display: inline-block;
-  height: 20px;
-  padding: 5px 5px 0 4px;
+ 
+  
+/*padding-right: 5px;*/
+  
+-webkit-font-smoothing: antialiased;
+  
+font-family: helvetica, arial, sans-serif;
+  
+font-weight: bold;
+  
+font-size: 14px;
+  
+/* line-height: 1; */
+  
+text-decoration: none;
+  
+text-shadow: 0 -1px 0 #354c8c;
+  
+/* vertical-align: middle; */
+  
+/* white-space: nowrap; */
+  
+color: #fff;
+  
+background: linear-gradient(#4c69ba, #3b55a0);
+  
+/* box-sizing: border-box; */
+  
+display: inline-block;
+  
+/* height: 19px; */
+  
+/* padding: 5px 5px 0 4px; */
+  
 width: 70px;
+  
 text-align: center;
-  border: 0;
-  border-radius: 2px;
+  
+/* border: 0; */
+  
+border-radius: 2px;
 
+}
+.post-btn:hover{
+    background: white;
+  color: #4c69ba;
+  border: 2px solid #4c69ba;
+  text-decoration: none;
 }
 /*.img-profile{
   width: 500px;
