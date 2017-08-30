@@ -65,11 +65,18 @@ $article = mysqli_real_escape_string($link, $article);
 }
 ?>
 <?php include 'tpl/header.php'; ?>
-  <div class="content">
-    <h1>Edit Your Post</h1>
-    <form method="post" action="">
-      <label for="title">Title:</label><br>
-      <input type="text" name="title" value="<?= $post['title']; ?>"><br><br>
+  
+      <div class="text-left m-5">
+    <h1 style="font-family:serif ">Edit Your Post</h1>
+</div>
+        <div class="m-5">
+        <form method="post" action="" enctype="multipart/form-data" >
+            <div class="form-group w-25">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" id="title" value="<?= $post['title']; ?>">
+            </div>
+<!--      <label for="title">Title:</label><br>
+      <input type="text" name="title" value="<?= $post['title']; ?>"><br><br>-->
       <label for="article">Article:</label><br>
       <textarea rows="10" cols="50" name="article"><?= $post['article']; ?></textarea><br><br>
       <input class="click-btn-large" type="submit" name="submit" value="Update post">
