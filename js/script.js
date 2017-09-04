@@ -1,7 +1,6 @@
 
 var $el = $('#sm-box');
-
+$('#myModal').modal('show');
 if($el.length > 0 ){
-
-$el.collapse({hide:true});
+$('#sm-box').slideToggle();
 }

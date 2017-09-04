@@ -11,14 +11,10 @@ if (!verify_user()) {
 $title = 'Update Profile Image';
 $error = '';
 
-
-//print_r($_FILES);
 if (isset($_POST['submit'])) {
     if (!empty($_FILES['image']['name'])) {
         define('MAX_UPLOAD_SIZE', 1024 * 1024 * 5);
         $ex = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
-//    echo '<pre>';
-//    print_r($_FILES);
         if (is_uploaded_file($_FILES['image']['tmp_name'])) {
             if ($_FILES['image']['error'] == 0 && $_FILES['image']['size'] <= MAX_UPLOAD_SIZE) {
                 $fileinfo = pathinfo($_FILES['image']['name']);
@@ -49,28 +45,19 @@ if (isset($_POST['submit'])) {
 <div class="text-center m-5">
     <h1 style="font-family:serif ">Upload Profile Picture</h1>
 </div>
-
-
 <div class="text-center">
     <img src="images/<?= $_SESSION['user_avatar']; ?>"  class="rounded img-thumbnail w-50" alt="Profile Picture">
 </div>
-        <!--<p><img border="0" class="img-profile" src="images/<?= $_SESSION['user_avatar']; ?>"></p><br><br>-->
-
 <div class="text-center mb-5 h-100">
     <form method="post" action="" enctype="multipart/form-data" >
-        <!--<label for="image">Image Profile</label><br><br>-->
-        <!--<input type="file" name="image" id="image"><br><br>-->
-
         <div class="btn btn-secondary text-center w-50">      
             <input type="file" name="image" id="image" class="form-control">
         </div>
-
         <div class="m-5">
             <input class="click-btn-large" type="submit" name="submit" value="Update Image">
             <input class="click-btn-large" type="button" value="Cancel"  onclick="window.location = 'blog.php';"><br>
             <span class="error"> <?= $error; ?></span>
         </div>
-
     </form>
 </div>
 
