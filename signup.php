@@ -55,9 +55,9 @@ if(isset($_POST['submit'])){
   if( ! $password || strlen($password) <6 || strlen($password) > 10){
     $valid=FALSE;
     $error['password'] = ' * You Must Enter A Password with at list 6 characters and less then 10 characters';
-  }elseif ( $password != $cpassword) {
+  }elseif ( $password != $cpassword || strlen($cpassword) <= 0) {
       $valid=FALSE;
-      $error['password'] = ' * Password\'s Must Match';
+      $error['confirm_password'] = ' * Password\'s Must Match';
     }
   if ($valid){
     $first_name = mysqli_real_escape_string($link,$first_name);
@@ -75,7 +75,6 @@ if(isset($_POST['submit'])){
      $_SESSION['user_avatar'] = 'default.jpg';
      $_SESSION['user_email']= $email;
      header('location: blog.php?sm=Your account created, you are now logedin');
-//     print_r($user);
      exit;
     }
   }
@@ -84,38 +83,52 @@ if(isset($_POST['submit'])){
 } else {
   $token = csrf_token();
 }
-
-//print_r($user);
 ?>
 <?php include 'tpl/header.php'; ?>
-      <div class="content">
-        <h1>Create New Account</h1>
+     <div class="text-left m-5">
+    <h1 style="font-family:serif ">Create New Account</h1>
+</div>
+<div class="row no-gutters ">
+<div class="ml-5 mr-5 bg-light col-3 col-md-3 align-items-center">
         <form method="post" action="">
           <input type="hidden" name="token" value="<?= $token; ?>">
-           <label for="first_name">First Name:</label><br>
-          <input type="text" name="first name" id="first_name" value="<?= old('name'); ?>">
-          <span class="error"> <?= $error['first name']; ?></span><br><br>
-           <label for="last_name">Last Name:</label><br>
-          <input type="text" name="last name" id="last_name" value="<?= old('name'); ?>">
-          <span class="error"> <?= $error['last name']; ?></span><br><br>
-          
-          <label for="email">Email:</label><br>
-          <input type="text" name="email" id="eamil" value="<?= old('email'); ?>">
-          <span class="error"> <?= $error['email']; ?></span><br><br>
-          
-          <label for="password">Password:<label><br> 
-      <input type="password" name="password" id="password">
-      <span class="error"> <?= $error['password']; ?></span><br><br>
-      
-       <label for="confirm_Password">Confirm Password:<label><br> 
-      <input type="password" name="confirm_password" id="confirm_Password">
-      <span class="error"> <?= $error['confirm_password']; ?></span><br><br>
-      
+           <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" name="first name" class="form-control w-10" id="first_name" placeholder="First Name" value="<?= old('name'); ?>"> 
+      <span class="error"> <?= $error['first name']; ?></span><br>
+       </div>
+          <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" name="last name" class="form-control w-10" id="last_name" placeholder="Last Name" value="<?= old('name'); ?>"> 
+      <span class="error"> <?= $error['last name']; ?></span><br>
+       </div>
+         <div class="form-group ">
+                <label for="email">Email address</label>
+                 <!--<input type="text" name="email" id="eamil" value="<?= old('email'); ?>">-->
+                <input type="text" class="form-control w-10" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="<?= old('email'); ?>">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+           <span class="error"> <?= $error['email']; ?></span><br>
+         </div>
+          <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" name="password" class="form-control w-10" id="Password" placeholder="Password">
+      <span class="error"> <?= $error['password']; ?></span><br>
+       </div>
+         <div class="form-group">
+                <label for="confirm_Password">Confirm Password:</label>
+                <input type="password" name="confirm_password" class="form-control w-10" id="confirm_Password" placeholder="Confirm Password">
+           <span class="error"> <?= $error['confirm_password']; ?></span><br><br>
+         </div>  
       <input class="click-btn-large" type="submit" name="submit" value="Sign Up">
-     
-        </form>
-        
-        
+        </form> 
       </div>
+ <div class="col-8 col-sm-8 col-md-8 text-center ">
+        <p class="post-info">
+            <img class="img-fluid rounded" style="border-radius:16.25rem!important" alt="Responsive image" src="images/about_us.jpg"><br><br>
+            <b class="form-text text-muted">The Fakebook Page celebrates how our friends inspire us, support us,
+                and help us discover the world when we connect.</b>
+        </p>
+    </div> 
+    </div>
 <?php include 'tpl/footer.php'; ?>     
 

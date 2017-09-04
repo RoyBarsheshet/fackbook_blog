@@ -1,7 +1,6 @@
 
 var $el = $('#sm-box');
-
+$('#myModal').modal('show');
 if($el.length > 0 ){
-
-$el.delay(3000).slideUp(1500);
+$('#sm-box').slideToggle();
 }
